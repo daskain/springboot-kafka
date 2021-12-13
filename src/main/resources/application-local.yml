@@ -1,0 +1,27 @@
+#APP SPECIFIC CUSTOM PROPERTIES
+app:
+  kafka:
+    producer:
+      topic: test
+    consumer:
+      topic: test
+#SPRING PROPERTIES
+spring:
+  kafka:
+    bootstrap-servers: host:9093
+    properties:
+      #Server host name verification is disabled by setting ssl.endpoint.identification.algorithm to an empty string
+      ssl.endpoint.identification.algorithm:
+    ssl:
+      protocol: SSL
+      trust-store-location: file:/tmp/store/truststore.jks
+      trust-store-password:
+      key-store-location: file:/tmp/store/keystore.jks
+      key-store-password:
+      key-password: password
+    producer:
+      bootstrap-servers: host:9093
+      retries: 0
+      acks: all
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
